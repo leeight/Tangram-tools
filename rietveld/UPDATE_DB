@@ -1,0 +1,4 @@
+ALTER TABLE codereview_issue ADD private bool DEFAULT 0;
+ALTER TABLE codereview_account ADD notify_by_email bool DEFAULT 1;
+ALTER TABLE codereview_account ADD notify_by_chat bool DEFAULT 0;
+ALTER TABLE codereview_account ADD xsrf_secret BLOB;

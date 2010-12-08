@@ -1,0 +1,715 @@
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 11:21:36] "GET /admin HTTP/1.1" 301 0
+[02/Nov/2010 11:21:42] "GET / HTTP/1.1" 200 34160
+[02/Nov/2010 11:21:47] "GET /admin/ HTTP/1.1" 200 5993
+[02/Nov/2010 11:21:49] "GET /admin/ HTTP/1.1" 200 5993
+[02/Nov/2010 11:22:00] "GET / HTTP/1.1" 200 34160
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 11:26:34] "GET / HTTP/1.1" 200 35060
+[02/Nov/2010 11:26:34] "GET /static/styles.css HTTP/1.1" 200 13248
+[02/Nov/2010 11:26:34] "GET /static/script.js HTTP/1.1" 200 99112
+[02/Nov/2010 11:26:34] "GET /static/favicon.ico HTTP/1.1" 200 232
+[02/Nov/2010 11:26:34] "GET /static/closedtriangle.gif HTTP/1.1" 200 78
+[02/Nov/2010 11:26:34] "GET /static/star-dark.gif HTTP/1.1" 200 179
+[02/Nov/2010 11:26:34] "GET /static/close.gif HTTP/1.1" 200 173
+[02/Nov/2010 11:26:35] "GET /static/star-lite.gif HTTP/1.1" 200 171
+[02/Nov/2010 11:26:35] "GET /static/rss.gif HTTP/1.1" 200 1025
+[02/Nov/2010 11:26:40] "GET /static/favicon.ico HTTP/1.1" 200 232
+[02/Nov/2010 11:27:14] "GET /static/favicon.ico HTTP/1.1" 200 232
+[02/Nov/2010 11:27:17] "GET / HTTP/1.1" 200 35060
+[02/Nov/2010 11:27:17] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 11:27:17] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 11:27:18] "GET /static/star-dark.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:27:18] "GET /static/closedtriangle.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:27:18] "GET /static/close.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:27:18] "GET /static/star-lite.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:27:18] "GET /static/rss.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:29:34] "GET / HTTP/1.1" 200 35081
+[02/Nov/2010 11:29:34] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 11:29:34] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 11:29:34] "GET /static/close.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:29:34] "GET /static/closedtriangle.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:29:34] "GET /static/star-dark.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:29:34] "GET /static/star-lite.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:29:34] "GET /static/rss.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:33:16] "GET / HTTP/1.1" 200 35060
+[02/Nov/2010 11:33:16] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 11:33:16] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 11:33:16] "GET /static/closedtriangle.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:33:16] "GET /static/star-dark.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:33:16] "GET /static/close.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:33:17] "GET /static/star-lite.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:33:17] "GET /static/rss.gif HTTP/1.1" 304 0
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 11:35:03] "GET / HTTP/1.1" 200 35072
+[02/Nov/2010 11:35:04] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 11:35:04] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 11:35:04] "GET /static/closedtriangle.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:35:04] "GET /static/star-dark.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:35:04] "GET /static/close.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:35:04] "GET /static/star-lite.gif HTTP/1.1" 304 0
+[02/Nov/2010 11:35:04] "GET /static/rss.gif HTTP/1.1" 304 0
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 11:37:16] "GET / HTTP/1.1" 200 34244
+[02/Nov/2010 11:37:17] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 11:37:17] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 11:40:06] "GET / HTTP/1.1" 200 34367
+[02/Nov/2010 11:40:07] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 11:40:07] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 11:40:14] "GET /settings HTTP/1.1" 200 9184
+[02/Nov/2010 11:40:14] "GET /static/styles.css HTTP/1.1" 200 13248
+[02/Nov/2010 11:40:14] "GET /static/script.js HTTP/1.1" 200 99112
+[02/Nov/2010 11:42:02] "GET / HTTP/1.1" 200 34397
+[02/Nov/2010 11:42:03] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 11:42:03] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 11:42:10] "GET /repos HTTP/1.1" 500 505573
+[02/Nov/2010 11:42:19] "GET / HTTP/1.1" 200 34397
+[02/Nov/2010 11:42:20] "GET /static/script.js HTTP/1.1" 200 99112
+[02/Nov/2010 11:42:20] "GET /static/styles.css HTTP/1.1" 200 13248
+[02/Nov/2010 11:42:49] "GET /repos HTTP/1.1" 500 507023
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 11:51:29] "GET / HTTP/1.1" 500 143902
+[02/Nov/2010 11:53:25] "GET / HTTP/1.1" 500 332261
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 11:54:22] "GET / HTTP/1.1" 500 329865
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 11:59:23] "GET / HTTP/1.1" 500 329717
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 12:00:02] "GET / HTTP/1.1" 500 334610
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[02/Nov/2010 12:04:08] "GET / HTTP/1.1" 200 34397
+[02/Nov/2010 12:04:08] "GET /static/styles.css HTTP/1.1" 304 0
+[02/Nov/2010 12:04:08] "GET /static/script.js HTTP/1.1" 304 0
+[02/Nov/2010 20:36:16] "GET /static/favicon.ico HTTP/1.1" 200 232
+[04/Nov/2010 10:21:37] "GET / HTTP/1.1" 200 7686
+[04/Nov/2010 10:21:37] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 10:21:37] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 10:21:40] "GET /static/favicon.ico HTTP/1.1" 200 232
+[04/Nov/2010 10:21:42] "GET /accounts/login/?next=/ HTTP/1.1" 200 474
+[04/Nov/2010 10:21:47] "POST /accounts/login/ HTTP/1.1" 302 0
+[04/Nov/2010 10:21:52] "GET / HTTP/1.1" 200 34398
+[04/Nov/2010 10:21:52] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 10:21:52] "GET /static/script.js HTTP/1.1" 200 99112
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[04/Nov/2010 11:03:58] "GET / HTTP/1.1" 500 382278
+[04/Nov/2010 11:04:33] "GET / HTTP/1.1" 200 7792
+[04/Nov/2010 11:04:33] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:04:33] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:04:36] "GET /codereview2/accounts/login?next=/ HTTP/1.1" 404 4809
+[04/Nov/2010 11:04:39] "GET /static/favicon.ico HTTP/1.1" 200 232
+[04/Nov/2010 11:04:39] "GET /static/favicon.ico HTTP/1.1" 200 232
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[04/Nov/2010 11:05:06] "GET / HTTP/1.1" 200 7770
+[04/Nov/2010 11:05:06] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:05:06] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:05:11] "GET /accounts/login/?next=/ HTTP/1.1" 200 475
+[04/Nov/2010 11:05:14] "POST /accounts/login/ HTTP/1.1" 302 0
+[04/Nov/2010 11:05:24] "GET / HTTP/1.1" 200 35166
+[04/Nov/2010 11:05:25] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:05:25] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:05:27] "GET / HTTP/1.1" 200 35166
+[04/Nov/2010 11:05:28] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:05:28] "GET /static/script.js HTTP/1.1" 304 0
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[04/Nov/2010 11:06:07] "GET / HTTP/1.1" 500 118618
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[04/Nov/2010 11:06:24] "GET / HTTP/1.1" 200 35178
+[04/Nov/2010 11:06:25] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:06:25] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:06:28] "GET /accounts/logout/?next=/codereview2/ HTTP/1.1" 302 0
+[04/Nov/2010 11:06:38] "GET /accounts/logout/?next=/codereview2/ HTTP/1.1" 302 0
+[04/Nov/2010 11:06:44] "GET / HTTP/1.1" 200 7794
+[04/Nov/2010 11:06:44] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:06:45] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:06:50] "GET /accounts/login/?next=/codereview2/ HTTP/1.1" 200 487
+[04/Nov/2010 11:07:01] "POST /accounts/login/ HTTP/1.1" 302 0
+[04/Nov/2010 11:07:02] "GET / HTTP/1.1" 200 35178
+[04/Nov/2010 11:07:02] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:07:02] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:07:09] "GET /accounts/logout/?next=/codereview2/ HTTP/1.1" 302 0
+[04/Nov/2010 11:07:13] "GET / HTTP/1.1" 200 7794
+[04/Nov/2010 11:07:13] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:07:13] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:07:15] "GET /accounts/login/?next=/codereview2/ HTTP/1.1" 200 487
+[04/Nov/2010 11:07:18] "POST /accounts/login/ HTTP/1.1" 302 0
+[04/Nov/2010 11:07:19] "GET / HTTP/1.1" 200 35178
+[04/Nov/2010 11:07:20] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:07:20] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:07:24] "GET /65/ HTTP/1.1" 200 46123
+[04/Nov/2010 11:07:25] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:07:25] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:07:26] "GET /static/opentriangle.gif HTTP/1.1" 200 56
+[04/Nov/2010 11:07:30] "GET /codereview2/settings HTTP/1.1" 404 4784
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[04/Nov/2010 11:09:28] "GET / HTTP/1.1" 200 35853
+[04/Nov/2010 11:09:29] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:09:29] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:09:29] "GET /static/closedtriangle.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:09:29] "GET /static/star-dark.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:09:29] "GET /static/close.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:09:29] "GET /static/star-lite.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:09:30] "GET /static/rss.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:09:32] "GET /settings HTTP/1.1" 200 9193
+[04/Nov/2010 11:09:32] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:09:32] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:09:48] "GET /use_uploadpy HTTP/1.1" 200 8938
+[04/Nov/2010 11:09:48] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:09:49] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:09:53] "GET /mine HTTP/1.1" 200 35857
+[04/Nov/2010 11:09:53] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:09:53] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:10:03] "GET /all?closed=1 HTTP/1.1" 200 8467
+[04/Nov/2010 11:10:03] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:10:03] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:10:10] "GET /repos HTTP/1.1" 500 518086
+[04/Nov/2010 11:10:54] "GET / HTTP/1.1" 200 35853
+[04/Nov/2010 11:10:54] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:10:54] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:10:58] "GET /all HTTP/1.1" 200 8458
+[04/Nov/2010 11:10:59] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:10:59] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:11:01] "GET /all?closed=1 HTTP/1.1" 200 8467
+[04/Nov/2010 11:11:02] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:11:02] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:11:04] "GET /starred HTTP/1.1" 200 14849
+[04/Nov/2010 11:11:04] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:11:04] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:11:08] "GET /use_uploadpy HTTP/1.1" 200 8939
+[04/Nov/2010 11:11:08] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:11:08] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:11:22] "GET /repos HTTP/1.1" 500 518112
+[04/Nov/2010 11:11:25] "GET /use_uploadpy HTTP/1.1" 200 8939
+[04/Nov/2010 11:11:25] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:11:25] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:11:28] "GET / HTTP/1.1" 200 35854
+[04/Nov/2010 11:11:28] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:11:29] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:11:34] "GET /61/ HTTP/1.1" 200 16921
+[04/Nov/2010 11:11:35] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:11:35] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:11:37] "GET /static/opentriangle.gif HTTP/1.1" 200 56
+[04/Nov/2010 11:11:37] "GET /static/zippyplus.gif HTTP/1.1" 200 200
+[04/Nov/2010 11:11:48] "GET /61/publish HTTP/1.1" 200 14863
+[04/Nov/2010 11:11:49] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:11:49] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:15:06] "GET / HTTP/1.1" 200 35854
+[04/Nov/2010 11:15:06] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:15:06] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:15:06] "GET /static/closedtriangle.gif HTTP/1.1" 200 78
+[04/Nov/2010 11:15:07] "GET /static/star-lite.gif HTTP/1.1" 200 171
+[04/Nov/2010 11:15:08] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:15:32] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:16:12] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:16:17] "GET /user/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:16:28] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:16:30] "GET / HTTP/1.1" 200 35854
+[04/Nov/2010 11:16:31] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:16:31] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:16:32] "GET /static/closedtriangle.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:16:32] "GET /static/star-dark.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:16:32] "GET /static/close.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:16:32] "GET /static/star-lite.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:16:32] "GET /static/rss.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:16:38] "GET /user/leeight HTTP/1.1" 200 35866
+[04/Nov/2010 11:16:38] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:16:38] "GET /static/script.js HTTP/1.1" 200 99112
+[04/Nov/2010 11:16:58] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:17:06] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:17:17] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:17:21] "GET /user_popup/leeight HTTP/1.1" 200 88
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[04/Nov/2010 11:18:39] "GET /user/leeight HTTP/1.1" 200 35901
+[04/Nov/2010 11:18:40] "GET /static/styles.css HTTP/1.1" 304 0
+[04/Nov/2010 11:18:40] "GET /static/script.js HTTP/1.1" 304 0
+[04/Nov/2010 11:18:40] "GET /static/closedtriangle.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:18:40] "GET /static/star-dark.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:18:40] "GET /static/close.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:18:41] "GET /static/star-lite.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:18:41] "GET /static/rss.gif HTTP/1.1" 304 0
+[04/Nov/2010 11:18:44] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:18:55] "GET /user_popup/zhanglili01 HTTP/1.1" 404 41
+[04/Nov/2010 11:18:58] "GET /user_popup/leeight HTTP/1.1" 200 88
+[04/Nov/2010 11:22:25] "GET /settings HTTP/1.1" 200 9193
+[04/Nov/2010 11:22:26] "GET /static/styles.css HTTP/1.1" 200 13248
+[04/Nov/2010 11:22:26] "GET /static/script.js HTTP/1.1" 200 99112
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+[05/Nov/2010 00:12:38] "GET /static/favicon.ico HTTP/1.1" 200 232
+Validating models...
+0 errors found
+
+Django version 1.1.2 SVN-14439, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/django/db/__init__.py:18: DeprecationWarning: settings.DATABASE_* is deprecated; use settings.DATABASES instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/db/__init__.py:59: DeprecationWarning: Short names for ENGINE in database configurations are deprecated. Prepend default.ENGINE with 'django.db.backends.'
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+/home/work/apps/codereview2/examples/rietveld/django/core/context_processors.py:27: DeprecationWarning: The context processor at `django.core.context_processors.auth` is deprecated; use the path `django.contrib.auth.context_processors.auth` instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/template/loaders/filesystem.py:58: DeprecationWarning: 'django.template.loaders.filesystem.load_template_source' is deprecated; use 'django.template.loaders.filesystem.Loader' instead.
+  DeprecationWarning
+[05/Nov/2010 02:28:50] "GET / HTTP/1.1" 200 35889
+[05/Nov/2010 02:28:50] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:28:50] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:28:50] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:28:50] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:28:50] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:28:50] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:28:50] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:28:53] "GET / HTTP/1.1" 200 35889
+[05/Nov/2010 02:28:53] "GET /static/favicon.ico HTTP/1.1" 404 35
+[05/Nov/2010 02:28:53] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:28:53] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:28:53] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:28:53] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:28:53] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:28:53] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:28:53] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:29:16] "GET /static/styles.css%22 HTTP/1.1" 404 35
+[05/Nov/2010 02:29:18] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:29:21] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:29:21] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:29:21] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:29:21] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:29:21] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:29:25] "GET / HTTP/1.1" 200 35889
+[05/Nov/2010 02:29:25] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:29:25] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:29:25] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:29:25] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:29:25] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:29:25] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:29:25] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:30:22] "GET / HTTP/1.1" 200 35889
+[05/Nov/2010 02:30:22] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:30:22] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:30:22] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:30:22] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:22] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:30:22] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:30:22] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:22] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:22] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:30:31] "GET / HTTP/1.1" 200 35889
+[05/Nov/2010 02:30:31] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:30:31] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:30:31] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:30:31] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:31] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:30:31] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:31] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:30:51] "GET / HTTP/1.1" 200 35889
+[05/Nov/2010 02:30:52] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:30:52] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:30:52] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:30:52] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:52] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:30:52] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:30:52] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:52] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:52] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:30:58] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:30:59] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:30:59] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:30:59] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:30:59] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:59] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:30:59] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:30:59] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:59] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:30:59] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:30:59] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:32:32] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:32:32] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:32:32] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:32:32] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:32:32] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:32:32] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:32:32] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:32:32] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:32:32] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:32:32] "GET /static/rss.gif HTTP/1.1" 404 31
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+/home/work/apps/codereview2/examples/rietveld/django/core/context_processors.py:27: DeprecationWarning: The context processor at `django.core.context_processors.auth` is deprecated; use the path `django.contrib.auth.context_processors.auth` instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/template/loaders/filesystem.py:58: DeprecationWarning: 'django.template.loaders.filesystem.load_template_source' is deprecated; use 'django.template.loaders.filesystem.Loader' instead.
+  DeprecationWarning
+[05/Nov/2010 02:36:12] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:36:12] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:36:12] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:36:12] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:36:12] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:36:12] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:36:12] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:36:12] "GET /static/rss.gif HTTP/1.1" 404 31
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+/home/work/apps/codereview2/examples/rietveld/django/core/context_processors.py:27: DeprecationWarning: The context processor at `django.core.context_processors.auth` is deprecated; use the path `django.contrib.auth.context_processors.auth` instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/template/loaders/filesystem.py:58: DeprecationWarning: 'django.template.loaders.filesystem.load_template_source' is deprecated; use 'django.template.loaders.filesystem.Loader' instead.
+  DeprecationWarning
+[05/Nov/2010 02:39:03] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:39:03] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:39:03] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:39:03] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:39:03] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:39:03] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:39:03] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:39:03] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:39:06] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:39:06] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:39:06] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:39:06] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:39:06] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:39:06] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:39:06] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:39:06] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:39:06] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:39:06] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:39:06] "GET /static/rss.gif HTTP/1.1" 404 31
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+[05/Nov/2010 02:41:42] "GET /mine HTTP/1.1" 500 137363
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+/home/work/apps/codereview2/examples/rietveld/django/core/context_processors.py:27: DeprecationWarning: The context processor at `django.core.context_processors.auth` is deprecated; use the path `django.contrib.auth.context_processors.auth` instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/template/loaders/filesystem.py:58: DeprecationWarning: 'django.template.loaders.filesystem.load_template_source' is deprecated; use 'django.template.loaders.filesystem.Loader' instead.
+  DeprecationWarning
+[05/Nov/2010 02:42:37] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:42:37] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:42:37] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:42:37] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:42:37] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:42:37] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:42:37] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:42:37] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:42:37] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:42:37] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:42:37] "GET /static/rss.gif HTTP/1.1" 404 31
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+/home/work/apps/codereview2/examples/rietveld/django/core/context_processors.py:27: DeprecationWarning: The context processor at `django.core.context_processors.auth` is deprecated; use the path `django.contrib.auth.context_processors.auth` instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/template/loaders/filesystem.py:58: DeprecationWarning: 'django.template.loaders.filesystem.load_template_source' is deprecated; use 'django.template.loaders.filesystem.Loader' instead.
+  DeprecationWarning
+[05/Nov/2010 02:43:48] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:43:48] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:43:48] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:43:48] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:43:48] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:43:48] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:43:48] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:43:48] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:43:48] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:43:48] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:43:48] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:43:59] "GET /65/ HTTP/1.1" 200 46340
+[05/Nov/2010 02:44:00] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:44:00] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:44:00] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:00] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:44:00] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:44:00] "GET /static/zippyplus.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:00] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:44:03] "GET /65/diff/65/src/cb/listHelper.js HTTP/1.1" 200 37073
+[05/Nov/2010 02:44:03] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:44:03] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:44:03] "GET /static/zippyplus.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:03] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:03] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:44:08] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:08] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:44:08] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:44:08] "GET /static/zippyplus.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:08] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:44:09] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:44:09] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:09] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:44:09] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:44:09] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:44:37] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:44:41] "GET /static/styles.css HTTP/1.1" 404 34
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+/home/work/apps/codereview2/examples/rietveld/django/core/context_processors.py:27: DeprecationWarning: The context processor at `django.core.context_processors.auth` is deprecated; use the path `django.contrib.auth.context_processors.auth` instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/template/loaders/filesystem.py:58: DeprecationWarning: 'django.template.loaders.filesystem.load_template_source' is deprecated; use 'django.template.loaders.filesystem.Loader' instead.
+  DeprecationWarning
+[05/Nov/2010 02:46:53] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:46:54] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:46:54] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:46:54] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:46:54] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:46:54] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:46:54] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:46:54] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:46:54] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:46:54] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:46:55] "GET /static/rss.gif HTTP/1.1" 404 31
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+[<RegexURLPattern None ^accounts/login/$>, <RegexURLPattern None ^accounts/logout/$>, <RegexURLResolver [<RegexURLPattern index ^$>, <RegexURLPattern logout ^logout/$>, <RegexURLPattern password_change ^password_change/$>, <RegexURLPattern password_change_done ^password_change/done/$>, <RegexURLPattern jsi18n ^jsi18n/$>, <RegexURLPattern None ^r/(?P<content_type_id>\d+)/(?P<object_id>.+)/$>, <RegexURLPattern app_list ^(?P<app_label>\w+)/$>, <RegexURLResolver [<RegexURLPattern auth_group_changelist ^$>, <RegexURLPattern auth_group_add ^add/$>, <RegexURLPattern auth_group_history ^(.+)/history/$>, <RegexURLPattern auth_group_delete ^(.+)/delete/$>, <RegexURLPattern auth_group_change ^(.+)/$>] (None:None) ^auth/group/>, <RegexURLResolver [<RegexURLPattern None ^(\d+)/password/$>, <RegexURLPattern auth_user_changelist ^$>, <RegexURLPattern auth_user_add ^add/$>, <RegexURLPattern auth_user_history ^(.+)/history/$>, <RegexURLPattern auth_user_delete ^(.+)/delete/$>, <RegexURLPattern auth_user_change ^(.+)/$>] (None:None) ^auth/user/>, <RegexURLResolver [<RegexURLPattern sites_site_changelist ^$>, <RegexURLPattern sites_site_add ^add/$>, <RegexURLPattern sites_site_history ^(.+)/history/$>, <RegexURLPattern sites_site_delete ^(.+)/delete/$>, <RegexURLPattern sites_site_change ^(.+)/$>] (None:None) ^sites/site/>] (admin:admin) ^admin/>, <RegexURLPattern None ^_ah/admin>, <RegexURLResolver codereview.urls (None:None) >, <RegexURLResolver [<RegexURLPattern None ^(?P<path>.*)$>] (None:None) ^static\/>]
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+/home/work/apps/codereview2/examples/rietveld/django/core/context_processors.py:27: DeprecationWarning: The context processor at `django.core.context_processors.auth` is deprecated; use the path `django.contrib.auth.context_processors.auth` instead.
+  DeprecationWarning
+/home/work/apps/codereview2/examples/rietveld/django/template/loaders/filesystem.py:58: DeprecationWarning: 'django.template.loaders.filesystem.load_template_source' is deprecated; use 'django.template.loaders.filesystem.Loader' instead.
+  DeprecationWarning
+[05/Nov/2010 02:49:31] "GET /mine HTTP/1.1" 200 35893
+[05/Nov/2010 02:49:31] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:49:31] "GET /static/script.js HTTP/1.1" 404 33
+[05/Nov/2010 02:49:31] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:49:31] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:49:31] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:49:32] "GET /static/closedtriangle.gif HTTP/1.1" 404 42
+[05/Nov/2010 02:49:32] "GET /static/star-dark.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:49:32] "GET /static/close.gif HTTP/1.1" 404 33
+[05/Nov/2010 02:49:32] "GET /static/star-lite.gif HTTP/1.1" 404 37
+[05/Nov/2010 02:49:32] "GET /static/rss.gif HTTP/1.1" 404 31
+[05/Nov/2010 02:49:36] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:49:36] "GET /static/styles.css HTTP/1.1" 404 34
+Validating models...
+0 errors found
+
+Django version 1.3 pre-alpha, using settings 'rietveld.settings'
+Development server is running at http://0.0.0.0:4567/
+Quit the server with CONTROL-C.
+/home/work/apps/codereview2/examples/rietveld/codereview/models.py:19: DeprecationWarning: the md5 module is deprecated; use hashlib instead
+  import md5
+/home/work/apps/codereview2/examples/rietveld/django/db/models/fields/subclassing.py:80: DeprecationWarning: A Field class whose get_db_prep_value method hasn't been updated to take `connection` and `prepared` arguments.
+  new_class = super(SubfieldBase, cls).__new__(cls, base, name, attrs)
+[05/Nov/2010 02:50:03] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:51:14] "GET /static/styles.css HTTP/1.1" 404 34
+[05/Nov/2010 02:51:15] "GET /static/styles.css HTTP/1.1" 404 34
