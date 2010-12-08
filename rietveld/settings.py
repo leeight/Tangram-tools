@@ -49,10 +49,10 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-# MEDIA_ROOT = '/home/work/apps/codereview2/examples/rietveld/static'
+# MEDIA_ROOT = '/home/work/apps/codereview/examples/rietveld/static'
 MEDIA_ROOT = ''
 
-APP_PREFIX = '/codereview2'
+APP_PREFIX = '/codereview'
 LOGIN_URL = APP_PREFIX + '/accounts/login/'
 LOGOUT_URL = APP_PREFIX + '/accounts/logout/'
 ADMIN_SITE_ROOT_URL = APP_PREFIX + '/admin/'

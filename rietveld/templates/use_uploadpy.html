@@ -2,11 +2,11 @@
 
 {%block body%}
 <h1>Tired of uploading files through the form?</h1>
-<p>Download <a href="{{media_url}}upload.py">upload.py</a>, a simple tool for
+<p>Download <a href="{{media_url}}Fcodereview">Fcodereview</a>, a simple tool for
 uploading diffs from a version control system to the codereview app.</p>
 
 <p><strong>Usage summary:</strong>
-<pre>upload.py [options] [-- diff_options]</pre></p>
+<pre>Fcodereview [options] [-- diff_options]</pre></p>
 
 <p>Diff options are passed to the diff command of the underlying system.</p>
 
@@ -26,7 +26,7 @@ uploading diffs from a version control system to the codereview app.</p>
   <input type="hidden" name="xsrf_token" value="{{xsrf_token}}">
   <input name="disable_msg" value="1" id="disable_msg" type="checkbox" />
   <label for="disable_msg">Don't show this message again</label></p>
-  <input type="submit" name="download" value="Download upload.py" />
+  <input type="submit" name="download" value="Download Fcodereview" />
   <input type="submit" name="create" value="Go to the Create Issue Form" />
 </form>
 </div>
