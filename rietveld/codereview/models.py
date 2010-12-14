@@ -23,7 +23,7 @@ import time
 
 # AppEngine imports
 from google.appengine.ext import db
-from google.appengine.api import memcache
+from google.appengine.api import memcache, users
 
 # Local imports
 import engine
@@ -94,7 +94,7 @@ class Issue(db.Model):
 
   def user_can_edit(self, user):
     """Return true if the given user has permission to edit this issue."""
-    return user == self.owner
+    return user == self.owner or users.is_current_user_admin()
 
   @property
   def edit_allowed(self):
