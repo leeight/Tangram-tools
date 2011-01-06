@@ -24,6 +24,7 @@ Supported version control systems:
   Git
   Mercurial
   Subversion
+  Perforce
 
 It is important for Git/Mercurial users to specify a tree/node/branch to diff
 against by using the '--rev' option.
@@ -36,6 +37,7 @@ import cookielib
 import fnmatch
 import getpass
 import logging
+import marshal
 import mimetypes
 import optparse
 import os
@@ -78,7 +80,7 @@ AUTH_ACCOUNT_TYPE = "GOOGLE"
 # URL of the default review server. As for AUTH_ACCOUNT_TYPE, this line could be
 # changed by the review server (see handler for upload.py).
 # DEFAULT_REVIEW_SERVER = "codereview.appspot.com"
-DEFAULT_REVIEW_SERVER = "fe.baidu.com/codereview2"
+DEFAULT_REVIEW_SERVER = "fe.baidu.com/codereview"
 
 # Max size of patch or base file.
 MAX_UPLOAD_SIZE = 900 * 1024
@@ -87,6 +89,7 @@ MAX_UPLOAD_SIZE = 900 * 1024
 VCS_GIT = "Git"
 VCS_MERCURIAL = "Mercurial"
 VCS_SUBVERSION = "Subversion"
+VCS_PERFORCE = "Perforce"
 VCS_UNKNOWN = "Unknown"
 
 # whitelist for non-binary filetypes which do not start with "text/"
@@ -100,6 +103,8 @@ VCS_ABBREVIATIONS = {
   "hg": VCS_MERCURIAL,
   VCS_SUBVERSION.lower(): VCS_SUBVERSION,
   "svn": VCS_SUBVERSION,
+  VCS_PERFORCE.lower(): VCS_PERFORCE,
+  "p4": VCS_PERFORCE,
   VCS_GIT.lower(): VCS_GIT,
 }
 
@@ -394,6 +399,11 @@ class AbstractRpcServer(object):
 ##           elif e.code >= 500 and e.code < 600:
 ##             # Server Error - try again.
 ##             continue
+          elif e.code == 301:
+            # Handle permanent redirect manually.
+            url = e.info()["location"]
+            url_loc = urlparse.urlparse(url)
+            self.host = '%s://%s' % (url_loc[0], url_loc[1])
           else:
             raise
     finally:
@@ -500,6 +510,8 @@ group.add_option("-v", "--verbose", action="store_const", const=2,
                  help="Print info level logs.")
 group.add_option("--noisy", action="store_const", const=3,
                  dest="verbose", help="Print all logs.")
+group.add_option("--print_diffs", dest="print_diffs", default=False,
+                 help="Print full diffs.")
 # Review server
 group = parser.add_option_group("Review server options")
 group.add_option("-s", "--server", action="store", dest="server",
@@ -572,7 +584,21 @@ group.add_option("--vcs", action="store", dest="vcs",
 group.add_option("--emulate_svn_auto_props", action="store_true",
                  dest="emulate_svn_auto_props", default=False,
                  help=("Emulate Subversion's auto properties feature."))
-
+# Perforce-specific
+group = parser.add_option_group("Perforce-specific options "
+                                "(overrides P4 environment variables)")
+group.add_option("--p4_port", action="store", dest="p4_port",
+                 metavar="P4_PORT", default=None,
+                 help=("Perforce server and port (optional)"))
+group.add_option("--p4_changelist", action="store", dest="p4_changelist",
+                 metavar="P4_CHANGELIST", default=None,
+                 help=("Perforce changelist id"))
+group.add_option("--p4_client", action="store", dest="p4_client",
+                 metavar="P4_CLIENT", default=None,
+                 help=("Perforce client/workspace"))
+group.add_option("--p4_user", action="store", dest="p4_user",
+                 metavar="P4_USER", default=None,
+                 help=("Perforce user"))
 
 def GetRpcServer(server, email=None, host_override=None, save_cookies=True,
                  account_type=AUTH_ACCOUNT_TYPE):
@@ -696,7 +722,7 @@ def RunShellWithReturnCode(command, print_output=False,
     universal_newlines: Use universal_newlines flag (default: True).
 
   Returns:
-    Tuple (output, return code)
+    Tuple (output, return code, errout)
   """
   logging.info("Running %s", command)
   p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
@@ -719,12 +745,12 @@ def RunShellWithReturnCode(command, print_output=False,
     print >>sys.stderr, errout
   p.stdout.close()
   p.stderr.close()
-  return output, p.returncode
+  return output, p.returncode, errout
 
 
 def RunShell(command, silent_ok=False, universal_newlines=True,
              print_output=False, env=os.environ):
-  data, retcode = RunShellWithReturnCode(command, print_output,
+  data, retcode, errout = RunShellWithReturnCode(command, print_output,
                                          universal_newlines, env)
   if retcode:
     ErrorExit("Got error status from %s:\n%s" % (command, data))
@@ -1025,17 +1051,26 @@ class SubversionVCS(VersionControlSystem):
       dirname, relfilename = os.path.split(filename)
       if dirname not in self.svnls_cache:
         cmd = ["svn", "list", "-r", self.rev_start, dirname or "."]
-        out, returncode = RunShellWithReturnCode(cmd)
+        out, returncode, errout = RunShellWithReturnCode(cmd)
+        
+        old_files = []
         if returncode:
-          ErrorExit("Failed to get status for %s." % filename)
-        old_files = out.splitlines()
+          if errout.startswith("svn: Unable to find repository location for "):
+            # dirname doesn't exist @rev_start, so the old_files is empty
+            old_files = []
+          else:
+            ErrorExit("Failed to get status for %s." % filename)
+        else:
+          old_files.extend(out.splitlines())
+
         args = ["svn", "list"]
         if self.rev_end:
           args += ["-r", self.rev_end]
         cmd = args + [dirname or "."]
-        out, returncode = RunShellWithReturnCode(cmd)
+        out, returncode, errout = RunShellWithReturnCode(cmd)
         if returncode:
           ErrorExit("Failed to run command %s" % cmd)
+
         self.svnls_cache[dirname] = (old_files, out.splitlines())
       old_files, new_files = self.svnls_cache[dirname]
       if relfilename in old_files and relfilename not in new_files:
@@ -1075,7 +1110,7 @@ class SubversionVCS(VersionControlSystem):
         url = filename
         args += ["-r", "BASE"]
       cmd = ["svn"] + args + ["propget", "svn:mime-type", url]
-      mimetype, returncode = RunShellWithReturnCode(cmd)
+      mimetype, returncode, errout = RunShellWithReturnCode(cmd)
       if returncode:
         # File does not exist in the requested revision.
         # Reset mimetype, it contains an error message.
@@ -1113,7 +1148,7 @@ class SubversionVCS(VersionControlSystem):
                                   universal_newlines=universal_newlines,
                                   silent_ok=True)
         else:
-          base_content, ret_code = RunShellWithReturnCode(
+          base_content, ret_code, errout = RunShellWithReturnCode(
             ["svn", "cat", filename], universal_newlines=universal_newlines)
           if ret_code and status[0] == "R":
             # It's a replaced file without local history (see issue208).
@@ -1132,7 +1167,7 @@ class SubversionVCS(VersionControlSystem):
             url = filename
             args += ["-r", "BASE"]
           cmd = ["svn"] + args + ["propget", "svn:keywords", url]
-          keywords, returncode = RunShellWithReturnCode(cmd)
+          keywords, returncode, errout = RunShellWithReturnCode(cmd)
           if keywords and not returncode:
             base_content = self._CollapseKeywords(base_content, keywords)
     else:
@@ -1233,7 +1268,7 @@ class GitVCS(VersionControlSystem):
 
   def GetFileContent(self, file_hash, is_binary):
     """Returns the content of a file identified by its git hash."""
-    data, retcode = RunShellWithReturnCode(["git", "show", file_hash],
+    data, retcode, errout = RunShellWithReturnCode(["git", "show", file_hash],
                                             universal_newlines=not is_binary)
     if retcode:
       ErrorExit("Got error status from 'git show %s'" % file_hash)
@@ -1348,13 +1383,12 @@ class MercurialVCS(VersionControlSystem):
     # the working copy
     if out[0].startswith('%s: ' % relpath):
       out = out[1:]
-    if len(out) > 1:
+    status, _ = out[0].split(' ', 1)
+    if len(out) > 1 and status == "A":
       # Moved/copied => considered as modified, use old filename to
       # retrieve base contents
       oldrelpath = out[1].strip()
       status = "M"
-    else:
-      status, _ = out[0].split(' ', 1)
     if ":" in self.base_rev:
       base_rev = self.base_rev.split(":", 1)[0]
     else:
@@ -1374,6 +1408,326 @@ class MercurialVCS(VersionControlSystem):
       new_content = None
     return base_content, new_content, is_binary, status
 
+
+class PerforceVCS(VersionControlSystem):
+  """Implementation of the VersionControlSystem interface for Perforce."""
+
+  def __init__(self, options):
+    
+    def ConfirmLogin():
+      # Make sure we have a valid perforce session
+      while True:
+        data, retcode = self.RunPerforceCommandWithReturnCode(
+            ["login", "-s"], marshal_output=True)
+        if not data:
+          ErrorExit("Error checking perforce login")
+        if not retcode and (not "code" in data or data["code"] != "error"):
+          break
+        print "Enter perforce password: "
+        self.RunPerforceCommandWithReturnCode(["login"])
+      
+    super(PerforceVCS, self).__init__(options)
+    
+    self.p4_changelist = options.p4_changelist
+    if not self.p4_changelist:
+      ErrorExit("A changelist id is required")
+    if (options.revision):
+      ErrorExit("--rev is not supported for perforce")
+    
+    self.p4_port = options.p4_port
+    self.p4_client = options.p4_client
+    self.p4_user = options.p4_user
+    
+    ConfirmLogin()
+    
+    if not options.message:
+      description = self.RunPerforceCommand(["describe", self.p4_changelist],
+                                            marshal_output=True)
+      if description and "desc" in description:
+        # Rietveld doesn't support multi-line descriptions
+        raw_message = description["desc"].strip()
+        lines = raw_message.splitlines()
+        if len(lines):
+          options.message = lines[0]
+  
+  def RunPerforceCommandWithReturnCode(self, extra_args, marshal_output=False,
+                                       universal_newlines=True):
+    args = ["p4"]
+    if marshal_output:
+      # -G makes perforce format its output as marshalled python objects
+      args.extend(["-G"])
+    if self.p4_port:
+      args.extend(["-p", self.p4_port])
+    if self.p4_client:
+      args.extend(["-c", self.p4_client])
+    if self.p4_user:
+      args.extend(["-u", self.p4_user])
+    args.extend(extra_args)
+    
+    data, retcode, errout = RunShellWithReturnCode(
+        args, print_output=False, universal_newlines=universal_newlines)
+    if marshal_output and data:
+      data = marshal.loads(data)
+    return data, retcode
+    
+  def RunPerforceCommand(self, extra_args, marshal_output=False,
+                         universal_newlines=True):
+    # This might be a good place to cache call results, since things like
+    # describe or fstat might get called repeatedly.
+    data, retcode = self.RunPerforceCommandWithReturnCode(
+        extra_args, marshal_output, universal_newlines)
+    if retcode:
+      ErrorExit("Got error status from %s:\n%s" % (extra_args, data))
+    return data
+
+  def GetFileProperties(self, property_key_prefix = "", command = "describe"):
+    description = self.RunPerforceCommand(["describe", self.p4_changelist],
+                                          marshal_output=True)
+    
+    changed_files = {}
+    file_index = 0
+    # Try depotFile0, depotFile1, ... until we don't find a match
+    while True:
+      file_key = "depotFile%d" % file_index
+      if file_key in description:
+        filename = description[file_key]
+        change_type = description[property_key_prefix + str(file_index)]
+        changed_files[filename] = change_type
+        file_index += 1
+      else:
+        break
+    return changed_files
+
+  def GetChangedFiles(self):
+    return self.GetFileProperties("action")
+
+  def GetUnknownFiles(self):
+    # Perforce doesn't detect new files, they have to be explicitly added
+    return []
+
+  def IsBaseBinary(self, filename):
+    base_filename = self.GetBaseFilename(filename)
+    return self.IsBinaryHelper(base_filename, "files")
+
+  def IsPendingBinary(self, filename):
+    return self.IsBinaryHelper(filename, "describe")
+
+  def IsBinary(self, filename):
+    ErrorExit("IsBinary is not safe: call IsBaseBinary or IsPendingBinary")
+
+  def IsBinaryHelper(self, filename, command):
+    file_types = self.GetFileProperties("type", command)
+    if not filename in file_types:
+      ErrorExit("Trying to check binary status of unknown file %s." % filename)
+    # This treats symlinks, macintosh resource files, temporary objects, and
+    # unicode as binary. See the Perforce docs for more details:
+    # http://www.perforce.com/perforce/doc.current/manuals/cmdref/o.ftypes.html
+    return not file_types[filename].endswith("text")
+
+  def GetFileContent(self, filename, revision, is_binary):
+    file_arg = filename
+    if revision:
+      file_arg += "#" + revision
+    # -q suppresses the initial line that displays the filename and revision
+    return self.RunPerforceCommand(["print", "-q", file_arg],
+                                   universal_newlines=not is_binary)
+
+  def GetBaseFilename(self, filename):
+    actionsWithDifferentBases = [
+        "move/add", # p4 move
+        "branch", # p4 integrate (to a new file), similar to hg "add"
+        "add", # p4 integrate (to a new file), after modifying the new file
+    ]
+    
+    # We only see a different base for "add" if this is a downgraded branch
+    # after a file was branched (integrated), then edited. 
+    if self.GetAction(filename) in actionsWithDifferentBases:
+      # -Or shows information about pending integrations/moves
+      fstat_result = self.RunPerforceCommand(["fstat", "-Or", filename],
+                                             marshal_output=True)
+      
+      baseFileKey = "resolveFromFile0" # I think it's safe to use only file0
+      if baseFileKey in fstat_result:
+        return fstat_result[baseFileKey]
+    
+    return filename
+
+  def GetBaseRevision(self, filename):
+    base_filename = self.GetBaseFilename(filename)
+    
+    have_result = self.RunPerforceCommand(["have", base_filename],
+                                          marshal_output=True)
+    if "haveRev" in have_result:
+      return have_result["haveRev"]
+    
+  def GetLocalFilename(self, filename):
+    where = self.RunPerforceCommand(["where", filename], marshal_output=True)
+    if "path" in where:
+      return where["path"]
+
+  def GenerateDiff(self, args): 
+    class DiffData:
+      def __init__(self, perforceVCS, filename, action):
+        self.perforceVCS = perforceVCS
+        self.filename = filename
+        self.action = action
+        self.base_filename = perforceVCS.GetBaseFilename(filename)
+        
+        self.file_body = None
+        self.base_rev = None
+        self.prefix = None
+        self.working_copy = True
+        self.change_summary = None
+         
+    def GenerateDiffHeader(diffData):
+      header = []
+      header.append("Index: %s" % diffData.filename)
+      header.append("=" * 67)
+      
+      if diffData.base_filename != diffData.filename:
+        if diffData.action.startswith("move"):
+          verb = "rename"
+        else:
+          verb = "copy"
+        header.append("%s from %s" % (verb, diffData.base_filename))
+        header.append("%s to %s" % (verb, diffData.filename))
+        
+      suffix = "\t(revision %s)" % diffData.base_rev
+      header.append("--- " + diffData.base_filename + suffix)
+      if diffData.working_copy:
+        suffix = "\t(working copy)"
+      header.append("+++ " + diffData.filename + suffix)
+      if diffData.change_summary:
+        header.append(diffData.change_summary)
+      return header
+  
+    def GenerateMergeDiff(diffData, args):
+      # -du generates a unified diff, which is nearly svn format
+      diffData.file_body = self.RunPerforceCommand(
+          ["diff", "-du", diffData.filename] + args)
+      diffData.base_rev = self.GetBaseRevision(diffData.filename)
+      diffData.prefix = ""
+      
+      # We have to replace p4's file status output (the lines starting
+      # with +++ or ---) to match svn's diff format
+      lines = diffData.file_body.splitlines()
+      first_good_line = 0
+      while (first_good_line < len(lines) and
+            not lines[first_good_line].startswith("@@")):
+        first_good_line += 1
+      diffData.file_body = "\n".join(lines[first_good_line:])
+      return diffData
+
+    def GenerateAddDiff(diffData):
+      fstat = self.RunPerforceCommand(["fstat", diffData.filename],
+                                      marshal_output=True)
+      if "headRev" in fstat:
+        diffData.base_rev = fstat["headRev"] # Re-adding a deleted file
+      else:
+        diffData.base_rev = "0" # Brand new file
+      diffData.working_copy = False
+      rel_path = self.GetLocalFilename(diffData.filename)
+      diffData.file_body = open(rel_path, 'r').read()
+      # Replicate svn's list of changed lines
+      line_count = len(diffData.file_body.splitlines())
+      diffData.change_summary = "@@ -0,0 +1"
+      if line_count > 1:
+          diffData.change_summary += ",%d" % line_count
+      diffData.change_summary += " @@"
+      diffData.prefix = "+"
+      return diffData
+    
+    def GenerateDeleteDiff(diffData):
+      diffData.base_rev = self.GetBaseRevision(diffData.filename)
+      is_base_binary = self.IsBaseBinary(diffData.filename)
+      # For deletes, base_filename == filename
+      diffData.file_body = self.GetFileContent(diffData.base_filename, 
+          None, 
+          is_base_binary)
+      # Replicate svn's list of changed lines
+      line_count = len(diffData.file_body.splitlines())
+      diffData.change_summary = "@@ -1"
+      if line_count > 1:
+        diffData.change_summary += ",%d" % line_count
+      diffData.change_summary += " +0,0 @@"
+      diffData.prefix = "-"
+      return diffData
+  
+    changed_files = self.GetChangedFiles()
+    
+    svndiff = []
+    filecount = 0
+    for (filename, action) in changed_files.items():
+      svn_status = self.PerforceActionToSvnStatus(action)
+      if svn_status == "SKIP":
+        continue
+    
+      diffData = DiffData(self, filename, action)
+      # Is it possible to diff a branched file? Stackoverflow says no:
+      # http://stackoverflow.com/questions/1771314/in-perforce-command-line-how-to-diff-a-file-reopened-for-add
+      if svn_status == "M":
+        diffData = GenerateMergeDiff(diffData, args)
+      elif svn_status == "A":
+        diffData = GenerateAddDiff(diffData)
+      elif svn_status == "D":
+        diffData = GenerateDeleteDiff(diffData)
+      else:
+        ErrorExit("Unknown file action %s (svn action %s)." % \
+                  (action, svn_status))
+      
+      svndiff += GenerateDiffHeader(diffData)
+      
+      for line in diffData.file_body.splitlines():
+        svndiff.append(diffData.prefix + line)
+      filecount += 1
+    if not filecount:
+      ErrorExit("No valid patches found in output from p4 diff")
+    return "\n".join(svndiff) + "\n"
+
+  def PerforceActionToSvnStatus(self, status):
+    # Mirroring the list at http://permalink.gmane.org/gmane.comp.version-control.mercurial.devel/28717
+    # Is there something more official?
+    return {
+            "add" : "A",
+            "branch" : "A",
+            "delete" : "D",
+            "edit" : "M", # Also includes changing file types.
+            "integrate" : "M",
+            "move/add" : "M",
+            "move/delete": "SKIP",
+            "purge" : "D", # How does a file's status become "purge"?
+            }[status]
+
+  def GetAction(self, filename):
+    changed_files = self.GetChangedFiles()
+    if not filename in changed_files:
+      ErrorExit("Trying to get base version of unknown file %s." % filename)
+      
+    return changed_files[filename]
+
+  def GetBaseFile(self, filename):
+    base_filename = self.GetBaseFilename(filename)
+    base_content = ""
+    new_content = None
+    
+    status = self.PerforceActionToSvnStatus(self.GetAction(filename))
+    
+    if status != "A":
+      revision = self.GetBaseRevision(base_filename)
+      if not revision:
+        ErrorExit("Couldn't find base revision for file %s" % filename)
+      is_base_binary = self.IsBaseBinary(base_filename)
+      base_content = self.GetFileContent(base_filename,
+                                         revision,
+                                         is_base_binary)
+    
+    is_binary = self.IsPendingBinary(filename)
+    if status != "D" and status != "SKIP":
+      relpath = self.GetLocalFilename(filename)
+      if is_binary and self.IsImage(relpath):
+        new_content = open(relpath, "rb").read()
+    
+    return base_content, new_content, is_binary, status
 
 # NOTE: The SplitPatch function is duplicated in engine.py, keep them in sync.
 def SplitPatch(data):
@@ -1444,7 +1798,7 @@ def UploadSeparatePatches(issue, rpc_server, patchset, data, options):
   return rv
 
 
-def GuessVCSName():
+def GuessVCSName(options):
   """Helper to guess the version control system.
 
   This examines the current directory, guesses which VersionControlSystem
@@ -1453,14 +1807,20 @@ def GuessVCSName():
   Returns:
     A pair (vcs, output).  vcs is a string indicating which VCS was detected
     and is one of VCS_GIT, VCS_MERCURIAL, VCS_SUBVERSION, or VCS_UNKNOWN.
+    Since local perforce repositories can't be easily detected, this method
+    will only guess VCS_PERFORCE if any perforce options have been specified.
     output is a string containing any interesting output from the vcs
     detection routine, or None if there is nothing interesting.
   """
+  for attribute, value in options.__dict__.iteritems():
+    if attribute.startswith("p4") and value != None:
+      return (VCS_PERFORCE, None)
+  
   # Mercurial has a command to get the base directory of a repository
   # Try running it, but don't die if we don't have hg installed.
   # NOTE: we try Mercurial first as it can sit on top of an SVN working copy.
   try:
-    out, returncode = RunShellWithReturnCode(["hg", "root"])
+    out, returncode, errout = RunShellWithReturnCode(["hg", "root"])
     if returncode == 0:
       return (VCS_MERCURIAL, out.strip())
   except OSError, (errno, message):
@@ -1475,7 +1835,7 @@ def GuessVCSName():
   # Git has a command to test if you're in a git tree.
   # Try running it, but don't die if we don't have git installed.
   try:
-    out, returncode = RunShellWithReturnCode(["git", "rev-parse",
+    out, returncode, errout = RunShellWithReturnCode(["git", "rev-parse",
                                               "--is-inside-work-tree"])
     if returncode == 0:
       return (VCS_GIT, None)
@@ -1507,7 +1867,7 @@ def GuessVCS(options):
       ErrorExit("Unknown version control system %r specified." % vcs)
     (vcs, extra_output) = (v, None)
   else:
-    (vcs, extra_output) = GuessVCSName()
+    (vcs, extra_output) = GuessVCSName(options)
 
   if vcs == VCS_MERCURIAL:
     if extra_output is None:
@@ -1515,6 +1875,8 @@ def GuessVCS(options):
     return MercurialVCS(options, extra_output)
   elif vcs == VCS_SUBVERSION:
     return SubversionVCS(options)
+  elif vcs == VCS_PERFORCE:
+    return PerforceVCS(options)
   elif vcs == VCS_GIT:
     return GitVCS(options)
 
@@ -1695,6 +2057,10 @@ def RealMain(argv, data=None):
   if data is None:
     data = vcs.GenerateDiff(args)
   data = vcs.PostProcessDiff(data)
+  if options.print_diffs:
+    print "Rietveld diff start:*****"
+    print data
+    print "Rietveld diff end:*****"
   files = vcs.GetBaseFiles(data)
   if verbosity >= 1:
     print "Upload server:", options.server, "(change with -s/--server)"
