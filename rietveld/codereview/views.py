@@ -877,24 +877,52 @@ def _paginate_issues(page_url,
 def all(request):
   """/all - Show a list of up to DEFAULT_LIMIT recent issues."""
   closed = request.GET.get('closed') or ''
+  tag = request.GET.get('tag') or ''
+
   nav_parameters = {}
   if closed:
     nav_parameters['closed'] = '1'
+  if tag:
+    nav_parameters['tag'] = tag
+  
+  page_url = reverse(all)
 
   if closed:
-    query = db.GqlQuery('SELECT * FROM Issue '
-                        'WHERE private = FALSE '
-                        'ORDER BY modified DESC')
+    tag_url_prefix = _url(page_url, closed='1')
   else:
-    query = db.GqlQuery('SELECT * FROM Issue '
-                        'WHERE closed = FALSE AND private = FALSE '
-                        'ORDER BY modified DESC')
+    tag_url_prefix = _url(page_url, closed='')
 
-  return _paginate_issues(reverse(all),
+  template_params = {
+    'tag_url_prefix' : tag_url_prefix
+  }
+
+  if tag:
+    begin_tag = smart_str('[' + tag + ']')
+    end_tag = smart_str('[' + tag + ']z')
+    if closed:
+      query = db.GqlQuery('SELECT * FROM Issue '
+                          'WHERE private = FALSE AND subject >= :1 AND subject < :2 '
+                          'ORDER BY modified DESC', begin_tag, end_tag)
+    else:
+      query = db.GqlQuery('SELECT * FROM Issue '
+                          'WHERE closed = FALSE AND private = FALSE AND subject >= :1 AND subject < :2 '
+                          'ORDER BY modified DESC', begin_tag, end_tag)
+  else:
+    if closed:
+      query = db.GqlQuery('SELECT * FROM Issue '
+                          'WHERE private = FALSE '
+                          'ORDER BY modified DESC')
+    else:
+      query = db.GqlQuery('SELECT * FROM Issue '
+                          'WHERE closed = FALSE AND private = FALSE '
+                          'ORDER BY modified DESC')
+
+  return _paginate_issues(page_url,
                           request,
                           query,
                           'all.html',
-                          extra_nav_parameters=nav_parameters)
+                          extra_nav_parameters=nav_parameters,
+                          extra_template_params=template_params)
 
 
 def _optimize_draft_counts(issues):

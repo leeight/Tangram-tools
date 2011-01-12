@@ -15,8 +15,11 @@
   </td>
   <td>
     <div class="subject">
+      {%for tag in issue.tags%}
+      <span class="issue-tag"><a href="{{tag_url_prefix}}&tag={{tag}}">{{tag}}</a></span>
+      {%endfor%}
       <a class="noul" href="{%url codereview.views.show issue.key.id%}"
-      id="issue-title-{{issue.key.id}}">{{issue.subject}}</a>
+      id="issue-title-{{issue.key.id}}">{{issue.normalized_subject}}</a>
       {%if issue.closed and not closed_issues %} (Closed) {%endif%}
     </div>
   </td>

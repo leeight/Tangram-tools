@@ -97,6 +97,18 @@ class Issue(db.Model):
     return user == self.owner or users.is_current_user_admin()
 
   @property
+  def tags(self):
+    """Return tags from issues subject, pattern is `[xxx]normalized_subject`"""
+    return re.findall(r"\[([^\]]+)\]", self.subject)
+
+  @property
+  def normalized_subject(self):
+    subject = re.sub(r"\[([^\]]+)\]", "", self.subject).strip()
+    if len(subject) <= 0:
+      subject = "no title"
+    return subject
+
+  @property
   def edit_allowed(self):
     """Whether the current user can edit this issue."""
     account = Account.current_user_account

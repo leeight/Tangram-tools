@@ -710,9 +710,9 @@ def GetContentType(filename):
 # Use a shell for subcommands on Windows to get a PATH search.
 use_shell = sys.platform.startswith("win")
 
-def RunShellWithReturnCode(command, print_output=False,
-                           universal_newlines=True,
-                           env=os.environ):
+def RunShellWithReturnCodeAndStderr(command, print_output=False,
+                                    universal_newlines=True,
+                                    env=os.environ):
   """Executes a command and returns the output from stdout and the return code.
 
   Args:
@@ -747,10 +747,17 @@ def RunShellWithReturnCode(command, print_output=False,
   p.stderr.close()
   return output, p.returncode, errout
 
+def RunShellWithReturnCode(command, print_output=False,
+                           universal_newlines=True,
+                           env=os.environ):
+  """Executes a command and returns the output from stdout and the return code."""
+  out, retcode, err = RunShellWithReturnCodeAndStderr(command, print_output,
+                           universal_newlines, env)
+  return out, retcode
 
 def RunShell(command, silent_ok=False, universal_newlines=True,
              print_output=False, env=os.environ):
-  data, retcode, errout = RunShellWithReturnCode(command, print_output,
+  data, retcode = RunShellWithReturnCode(command, print_output,
                                          universal_newlines, env)
   if retcode:
     ErrorExit("Got error status from %s:\n%s" % (command, data))
@@ -1051,26 +1058,23 @@ class SubversionVCS(VersionControlSystem):
       dirname, relfilename = os.path.split(filename)
       if dirname not in self.svnls_cache:
         cmd = ["svn", "list", "-r", self.rev_start, dirname or "."]
-        out, returncode, errout = RunShellWithReturnCode(cmd)
-        
-        old_files = []
+        out, returncode, err = RunShellWithReturnCodeAndStderr(cmd)
         if returncode:
-          if errout.startswith("svn: Unable to find repository location for "):
-            # dirname doesn't exist @rev_start, so the old_files is empty
-            old_files = []
+          # directory might not yet exist at start revison
+          # svn: Unable to find repository location for 'abc' in revision nnn
+          if re.match('^svn: Unable to find repository location for .+ in revision \d+', err):
+            old_files = ()
           else:
-            ErrorExit("Failed to get status for %s." % filename)
+            ErrorExit("Failed to get status for %s:\n%s" % (filename, err))
         else:
-          old_files.extend(out.splitlines())
-
+          old_files = out.splitlines()
         args = ["svn", "list"]
         if self.rev_end:
           args += ["-r", self.rev_end]
         cmd = args + [dirname or "."]
-        out, returncode, errout = RunShellWithReturnCode(cmd)
+        out, returncode = RunShellWithReturnCode(cmd)
         if returncode:
           ErrorExit("Failed to run command %s" % cmd)
-
         self.svnls_cache[dirname] = (old_files, out.splitlines())
       old_files, new_files = self.svnls_cache[dirname]
       if relfilename in old_files and relfilename not in new_files:
@@ -1110,7 +1114,7 @@ class SubversionVCS(VersionControlSystem):
         url = filename
         args += ["-r", "BASE"]
       cmd = ["svn"] + args + ["propget", "svn:mime-type", url]
-      mimetype, returncode, errout = RunShellWithReturnCode(cmd)
+      mimetype, returncode = RunShellWithReturnCode(cmd)
       if returncode:
         # File does not exist in the requested revision.
         # Reset mimetype, it contains an error message.
@@ -1148,7 +1152,7 @@ class SubversionVCS(VersionControlSystem):
                                   universal_newlines=universal_newlines,
                                   silent_ok=True)
         else:
-          base_content, ret_code, errout = RunShellWithReturnCode(
+          base_content, ret_code = RunShellWithReturnCode(
             ["svn", "cat", filename], universal_newlines=universal_newlines)
           if ret_code and status[0] == "R":
             # It's a replaced file without local history (see issue208).
@@ -1167,7 +1171,7 @@ class SubversionVCS(VersionControlSystem):
             url = filename
             args += ["-r", "BASE"]
           cmd = ["svn"] + args + ["propget", "svn:keywords", url]
-          keywords, returncode, errout = RunShellWithReturnCode(cmd)
+          keywords, returncode = RunShellWithReturnCode(cmd)
           if keywords and not returncode:
             base_content = self._CollapseKeywords(base_content, keywords)
     else:
@@ -1268,7 +1272,7 @@ class GitVCS(VersionControlSystem):
 
   def GetFileContent(self, file_hash, is_binary):
     """Returns the content of a file identified by its git hash."""
-    data, retcode, errout = RunShellWithReturnCode(["git", "show", file_hash],
+    data, retcode = RunShellWithReturnCode(["git", "show", file_hash],
                                             universal_newlines=not is_binary)
     if retcode:
       ErrorExit("Got error status from 'git show %s'" % file_hash)
@@ -1820,7 +1824,7 @@ def GuessVCSName(options):
   # Try running it, but don't die if we don't have hg installed.
   # NOTE: we try Mercurial first as it can sit on top of an SVN working copy.
   try:
-    out, returncode, errout = RunShellWithReturnCode(["hg", "root"])
+    out, returncode = RunShellWithReturnCode(["hg", "root"])
     if returncode == 0:
       return (VCS_MERCURIAL, out.strip())
   except OSError, (errno, message):
@@ -1835,7 +1839,7 @@ def GuessVCSName(options):
   # Git has a command to test if you're in a git tree.
   # Try running it, but don't die if we don't have git installed.
   try:
-    out, returncode, errout = RunShellWithReturnCode(["git", "rev-parse",
+    out, returncode = RunShellWithReturnCode(["git", "rev-parse",
                                               "--is-inside-work-tree"])
     if returncode == 0:
       return (VCS_GIT, None)

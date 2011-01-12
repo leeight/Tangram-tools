@@ -35,8 +35,23 @@ def account():
 
   return response
 
+def issue():
+  tag = "GE"
+  closed = "1"
+
+  query = models.Issue.all()
+  query.filter('private = ', 0)
+  if tag:
+    query.filter('lower_subject >= ', smart_str('[' + tag + ']'))
+    query.filter('lower_subject < ', smart_str('[' + tag + ']z'))
+  if not closed:
+    query.filter('closed = ', 0)
+  query.order('-modified')
+  for issue in query:
+    print issue.subject
+
 def main():
-  print account()
+  issue()
 
 if __name__ == "__main__":
   main()

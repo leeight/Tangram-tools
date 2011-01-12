@@ -707,6 +707,18 @@ span.visualtab {
   padding: 5px;
 }
 
+.issue-tag {
+  font-size:80%;
+  color:#063;
+  background-color:#F1F5EC;
+  padding:1px 3px;
+  border: 1px solid #F1F5EC;
+  border-radius:5px;
+  cursor:pointer;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  vertical-align:middle;
+}
 
 /* Messages */
 .message .header {
