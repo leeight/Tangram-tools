@@ -1,0 +1,4 @@
+some tools used to help tangram development
+1. rietveld is a codereview platform forked from http://code.google.com/p/rietveld
+2. Fcodereview is a shell script used to launch a codereview workflow, it also
+   check the code style use closure_linter.
