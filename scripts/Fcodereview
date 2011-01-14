@@ -1,0 +1,37 @@
+#!/bin/bash
+
+MOD_HOME=`readlink -f $0`
+MOD_HOME=`dirname ${MOD_HOME}`
+
+which gjslint &> /dev/null
+if [ $? -gt 0 ]; then
+  echo "please install closure-linter first. you can use this command"
+  echo "sudo easy_install http://closure-linter.googlecode.com/files/closure_linter-latest.tar.gz" 
+  exit 0
+fi
+
+git status -s &> /dev/null
+[ $? -eq 0 ] && {
+  # 可能有命令行参数过长的问题
+  gjslint `git status -s | awk '{print $2}'`
+  
+  [ $? -eq 0 ] && {
+    ${MOD_HOME}/fcv_main "$@"
+  }
+
+  exit 0
+}
+
+svn st &> /dev/null
+[ $? -eq 0 ] && {
+  # 可能有命令行参数过长的问题
+  gjslint `svn status | awk '{print $2}'`
+  
+  [ $? -eq 0 ] && {
+    ${MOD_HOME}/fcv_main "$@"
+  }
+
+  exit 0
+}
+
+echo "Sorry, i can't guess the vcs system, only support git and svn now";
