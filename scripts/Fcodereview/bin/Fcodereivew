@@ -1,0 +1,8 @@
+#!/bin/bash
+
+MOD_HOME=`readlink -f $0`
+MOD_HOME=`dirname ${MOD_HOME}`
+MOD_HOME=`dirname ${MOD_HOME}`
+
+# 先执行Fcodereview，获取改动的文件列表
+${MOD_HOME}/bin/main "$@"

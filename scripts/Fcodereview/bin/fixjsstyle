@@ -1,0 +1,10 @@
+#!/home/leeight/work/svn/public/ge/tools/scripts/Fcodereview/bin/python
+# EASY-INSTALL-ENTRY-SCRIPT: 'closure-linter==2.2.6','console_scripts','fixjsstyle'
+__requires__ = 'closure-linter==2.2.6'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('closure-linter==2.2.6', 'console_scripts', 'fixjsstyle')()
+    )
